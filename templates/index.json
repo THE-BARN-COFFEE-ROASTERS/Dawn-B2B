@@ -1,49 +1,100 @@
 {
   "sections": {
-    "88a495b2-c913-42fe-8b11-04dfe0aa4a5f": {
-      "type": "collection-list",
+    "3be2866a-2d91-4676-b04f-4d85dc5a4ac1": {
+      "type": "image-banner",
       "blocks": {
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-0": {
-          "type": "featured_collection",
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-0": {
+          "type": "heading",
           "settings": {
-            "collection": "beans"
+            "heading": "Image banner",
+            "heading_size": "h1"
           }
         },
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-1": {
-          "type": "featured_collection",
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-1": {
+          "type": "text",
           "settings": {
-            "collection": "equipment"
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
           }
         },
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-2": {
-          "type": "featured_collection",
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-2": {
+          "type": "buttons",
           "settings": {
-            "collection": "specials"
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-0",
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-1",
-        "template--17865943777545__88a495b2-c913-42fe-8b11-04dfe0aa4a5f-167931751629b4d56d-2"
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-0",
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-1",
+        "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-2"
       ],
       "settings": {
-        "title": "Collections",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 3,
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
         "color_scheme": "background-1",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "ffef1e79-7fcb-4ab1-92de-b72c848403a8": {
+      "type": "rich-text",
+      "blocks": {
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT US",
+            "heading_size": "h1"
+          }
+        },
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-0",
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-1",
+        "template--17879420043529__ffef1e79-7fcb-4ab1-92de-b72c848403a8-16799995390bcf9c90-2"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 0
       }
     },
     "video": {
       "type": "video",
       "settings": {
-        "heading": "ABOUT US",
+        "heading": "",
         "heading_size": "h1",
         "enable_video_looping": false,
         "video_url": "https:\/\/youtu.be\/VnAQDO-fg6M",
@@ -51,13 +102,14 @@
         "description": "",
         "full_width": true,
         "color_scheme": "background-1",
-        "padding_top": 36,
+        "padding_top": 24,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "88a495b2-c913-42fe-8b11-04dfe0aa4a5f",
+    "3be2866a-2d91-4676-b04f-4d85dc5a4ac1",
+    "ffef1e79-7fcb-4ab1-92de-b72c848403a8",
     "video"
   ]
 }
