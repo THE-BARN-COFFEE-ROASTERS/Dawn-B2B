@@ -6,24 +6,24 @@
         "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-0": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "THE BARN",
             "heading_size": "h1"
           }
         },
         "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-1": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "",
             "text_style": "body"
           }
         },
         "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-2": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
+            "button_label_1": "WHOLESALE LOGIN",
+            "button_link_1": "https:\/\/shopify.com\/16573941\/account",
             "button_style_secondary_1": false,
-            "button_label_2": "Button label",
+            "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
@@ -106,11 +106,46 @@
         "padding_top": 24,
         "padding_bottom": 36
       }
+    },
+    "effa7f36-6388-403c-b550-2e16dbaca102": {
+      "type": "newsletter",
+      "blocks": {
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-2": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-0",
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-1",
+        "template--17879420043529__effa7f36-6388-403c-b550-2e16dbaca102-167999965521519690-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "3be2866a-2d91-4676-b04f-4d85dc5a4ac1",
     "ffef1e79-7fcb-4ab1-92de-b72c848403a8",
-    "video"
+    "video",
+    "effa7f36-6388-403c-b550-2e16dbaca102"
   ]
 }
