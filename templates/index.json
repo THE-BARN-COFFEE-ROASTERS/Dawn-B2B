@@ -6,7 +6,7 @@
         "template--17879420043529__3be2866a-2d91-4676-b04f-4d85dc5a4ac1-1679999515be6add73-0": {
           "type": "heading",
           "settings": {
-            "heading": "THE BARN",
+            "heading": "THE BARN Berlin Coffee Roasters",
             "heading_size": "h1"
           }
         },
@@ -36,10 +36,10 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_5612_3403d952-6305-40fb-ac2c-02113b1adec2.jpg",
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 30,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
-        "show_text_box": true,
+        "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "ambient",
