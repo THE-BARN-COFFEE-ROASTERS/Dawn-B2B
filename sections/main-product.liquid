@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:4232>{% endcomment -%}
+  {%- assign locksmith_3451_product__first_available_variant = nil %}{% assign locksmith_3451_product__selected_variant = nil %}{% assign locksmith_3451_product__selected_or_first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_3451_product__first_available_variant == nil and variant.available %}{% assign locksmith_3451_product__first_available_variant = variant %}{% endif %}{% if locksmith_3451_product__selected_variant == nil and variant.selected %}{% assign locksmith_3451_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_3451_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_3451_product__selected_or_first_available_variant == nil %}{% assign locksmith_3451_product__selected_or_first_available_variant = locksmith_3451_product__first_available_variant %}{% endif -%}
+{%- comment %}</locksmith:4232>{% endcomment -%}
+
 <section
   id="MainProduct-{{ section.id }}"
   class="page-width section-{{ section.id }}-padding"
@@ -110,26 +114,26 @@
               <div {{ block.shopify_attributes }}>
                 {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                 {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <input type="hidden" name="id" value="{{ locksmith_3451_product__selected_or_first_available_variant.id }}">
                   {{ form | payment_terms }}
                 {%- endform -%}
               </div>
             {%- when 'inventory' -%}
               <p
-                class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if locksmith_3451_product__selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
                 {{ block.shopify_attributes }}
                 id="Inventory-{{ section.id }}"
                 role="status"
               >
-                {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                  {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                    {%- if product.selected_or_first_available_variant.inventory_quantity <= block.settings.inventory_threshold -%}
+                {%- if locksmith_3451_product__selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                  {%- if locksmith_3451_product__selected_or_first_available_variant.inventory_quantity > 0 -%}
+                    {%- if locksmith_3451_product__selected_or_first_available_variant.inventory_quantity <= block.settings.inventory_threshold -%}
                       <svg width="15" height="15" aria-hidden="true">
                         <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(238,148,65, 0.3)"/>
                         <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(238,148,65)"/>
                       </svg>
                       {%- if block.settings.show_inventory_quantity -%}
-                        {{- 'products.product.inventory_low_stock_show_count' | t: quantity: product.selected_or_first_available_variant.inventory_quantity -}}
+                        {{- 'products.product.inventory_low_stock_show_count' | t: quantity: locksmith_3451_product__selected_or_first_available_variant.inventory_quantity -}}
                       {%- else -%}
                         {{- 'products.product.inventory_low_stock' | t -}}
                       {%- endif -%}
@@ -139,13 +143,13 @@
                         <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(62,214,96)"/>
                       </svg>
                       {%- if block.settings.show_inventory_quantity -%}
-                        {{- 'products.product.inventory_in_stock_show_count' | t: quantity: product.selected_or_first_available_variant.inventory_quantity -}}
+                        {{- 'products.product.inventory_in_stock_show_count' | t: quantity: locksmith_3451_product__selected_or_first_available_variant.inventory_quantity -}}
                       {%- else -%}
                           {{- 'products.product.inventory_in_stock' | t -}}
                       {%- endif -%}
                     {%- endif -%}
                   {%- else -%}
-                    {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+                    {%- if locksmith_3451_product__selected_or_first_available_variant.inventory_policy == 'continue' -%}
                       <svg width="15" height="15" aria-hidden="true">
                         <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(62,214,96, 0.3)"/>
                         <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(62,214,96)"/>
@@ -169,12 +173,12 @@
               {%- endif -%}
             {%- when 'sku' -%}
               <p
-                class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if locksmith_3451_product__selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
                 id="Sku-{{ section.id }}"
                 role="status"
                 {{ block.shopify_attributes }}
               >
-                <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- product.selected_or_first_available_variant.sku -}}
+                <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- locksmith_3451_product__selected_or_first_available_variant.sku -}}
               </p>
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
@@ -204,7 +208,7 @@
               >
                 {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
                 {% # theme-check-disable %}
-                {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+                {%- assign cart_qty = cart | item_count_for_variant: locksmith_3451_product__selected_or_first_available_variant.id -%}
                 {% # theme-check-enable %}
                 <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
                   {{ 'products.product.quantity.label' | t }}
@@ -238,14 +242,14 @@
                     name="quantity"
                     id="Quantity-{{ section.id }}"
                     data-cart-quantity="{{ cart_qty }}"
-                    data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                    min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                    {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                      data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                      max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    data-min="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.min }}"
+                    min="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.min }}"
+                    {% if locksmith_3451_product__selected_or_first_available_variant.quantity_rule.max != null %}
+                      data-max="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.max }}"
+                      max="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.max }}"
                     {% endif %}
-                    step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                    value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                    step="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.increment }}"
+                    value="{{ locksmith_3451_product__selected_or_first_available_variant.quantity_rule.min }}"
                     form="{{ product_form_id }}"
                   />
                   <button class="quantity__button no-js-hidden" name="plus" type="button">
@@ -256,7 +260,7 @@
                   </button>
                 </quantity-input>
                 <div class="quantity__rules caption no-js-hidden">
-                  {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
+                  {%- if locksmith_3451_product__selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                     <span class="divider">
                       {{-
                         'products.product.quantity.multiples_of'
@@ -264,7 +268,7 @@
                       -}}
                     </span>
                   {%- endif -%}
-                  {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
+                  {%- if locksmith_3451_product__selected_or_first_available_variant.quantity_rule.min > 1 -%}
                     <span class="divider">
                       {{-
                         'products.product.quantity.minimum_of'
@@ -272,7 +276,7 @@
                       -}}
                     </span>
                   {%- endif -%}
-                  {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
+                  {%- if locksmith_3451_product__selected_or_first_available_variant.quantity_rule.max != null -%}
                     <span class="divider">
                       {{-
                         'products.product.quantity.maximum_of'
@@ -301,7 +305,7 @@
                 {{- block.settings.text -}}
               </a>
             {%- when 'share' -%}
-              {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}
+              {% assign share_url = locksmith_3451_product__selected_variant.url | default: product.url | prepend: request.origin %}
               {% render 'share-button',
                 block: block,
                 share_link: share_url
@@ -375,6 +379,9 @@
                             <div id="Slide-{{ block.id }}-{{ forloop.index }}" class="complementary-slide complementary-slide--{{ settings.card_style }} grid__item slider__slide slideshow__slide" tabindex="-1" role="group"{% if number_of_slides > 1 %} aria-roledescription="{{ 'sections.slideshow.slide' | t }}" aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"{% endif %}>
                               <ul class="list-unstyled" role="list">
                                 {%- for product in recommendations.products limit: block.settings.products_per_page offset: continue -%}
+                                  {%- comment %}<locksmith:df29>{% endcomment -%}
+                                    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: recommendations, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                  {%- comment %}</locksmith:df29>{% endcomment -%}
                                   <li>
                                     {% render 'card-product',
                                       card_product: product,
@@ -516,8 +523,8 @@
   </script>
 
   {%- liquid
-    if product.selected_or_first_available_variant.featured_media
-      assign seo_media = product.selected_or_first_available_variant.featured_media
+    if locksmith_3451_product__selected_or_first_available_variant.featured_media
+      assign seo_media = locksmith_3451_product__selected_or_first_available_variant.featured_media
     else
       assign seo_media = product.featured_media
     endif
@@ -535,15 +542,21 @@
         ],
       {%- endif %}
       "description": {{ product.description | strip_html | json }},
-      {% if product.selected_or_first_available_variant.sku != blank -%}
-        "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {% if locksmith_3451_product__selected_or_first_available_variant.sku != blank -%}
+        "sku": {{ locksmith_3451_product__selected_or_first_available_variant.sku | json }},
       {%- endif %}
       "brand": {
         "@type": "Brand",
         "name": {{ product.vendor | json }}
       },
       "offers": [
+        {%- comment %}<locksmith:6d48>{% endcomment -%}
+          {%- assign locksmith_0e38_forloop__size = 0 %}{%- for variant in product.variants -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_0e38_forloop__size = locksmith_0e38_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_0e38_forloop__index = nil -%}
+        {%- comment %}</locksmith:6d48>{% endcomment -%}
         {%- for variant in product.variants -%}
+          {%- comment %}<locksmith:37a4>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_0e38_forloop__index == nil %}{% assign locksmith_0e38_forloop__index = 1 %}{% assign locksmith_0e38_forloop__index0 = 0 %}{% else %}{% assign locksmith_0e38_forloop__index = locksmith_0e38_forloop__index | plus: 1 %}{% assign locksmith_0e38_forloop__index0 = locksmith_0e38_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_0e38_forloop__index == 1 %}{% assign locksmith_0e38_forloop__first = true %}{% else %}{% assign locksmith_0e38_forloop__first = false %}{% endif %}{% if locksmith_0e38_forloop__index == locksmith_0e38_forloop__size %}{% assign locksmith_0e38_forloop__last = true %}{% else %}{% assign locksmith_0e38_forloop__last = false %}{% endif %}{% assign locksmith_0e38_forloop__rindex = locksmith_0e38_forloop__size | minus: locksmith_0e38_forloop__index | minus: 1 %}{% assign locksmith_0e38_forloop__rindex0 = locksmith_0e38_forloop__size | minus: locksmith_0e38_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:37a4>{% endcomment -%}
           {
             "@type" : "Offer",
             {%- if variant.sku != blank -%}
@@ -562,7 +575,7 @@
             "price" : {{ variant.price | divided_by: 100.00 | json }},
             "priceCurrency" : {{ cart.currency.iso_code | json }},
             "url" : {{ request.origin | append: variant.url | json }}
-          }{% unless forloop.last %},{% endunless %}
+          }{% unless locksmith_0e38_forloop__last %},{% endunless %}
         {%- endfor -%}
       ]
     }
