@@ -3,7 +3,7 @@
   fiddle with what's below, but your changes will be reset the next time that
   Locksmith interacts with your shop.
 
-  Last updated: Thu, 30 Mar 2023 09:39:41 +0000
+  Last updated: Thu, 30 Mar 2023 09:40:19 +0000
   Integration version: v6.29
 {% endcomment -%}
 
@@ -11,20 +11,20 @@
       <script data-locksmith>Locksmith.cache.cart={{_t.attributes.locksmith|json}}</script>{%endcapture%}{%capture locksmith_customer_register_form%}{%if _d%}{%capture _9%}{%section "main-register"%}{%endcapture%}{{_9|replace:'</form>', '<input type="hidden" name="return_to" value=""></form>'}}
 
         <script data-locksmith>
+          document.body.className = "gradient";
           
-          
-          window.document.title = "";
+          window.document.title = "Create Account\n – THE BARN GmbH";
           var redirectUrl = window.location.href.replace('/account/register', '/');
           var inputNodes = document.querySelectorAll('input[name=return_to]');
           for (var i = 0; i < inputNodes.length; i++) {
             inputNodes[i].value = redirectUrl;
           }
-        </script>{%endif%}{%endcapture%}{%capture locksmith_customer_login_form%}{%if _d%}{%capture _9%}{%section "main-login"%}{%endcapture%}{{_9|replace:'</form>', '<input type="hidden" name="return_url" value=""></form>'}}
+        </script>{%endif%}{%endcapture%}{%capture locksmith_customer_login_form%}{%if _d%}<link href="//cdn.shopify.com/s/files/1/1657/3941/t/64/assets/customer.css?v=97970887154638603971679559678" rel="stylesheet" type="text/css" media="all" data-via-locksmith="true">{%capture _9%}{%section "main-login"%}{%endcapture%}{{_9|replace:'</form>', '<input type="hidden" name="return_url" value=""></form>'}}
 
         <script data-locksmith>
+          document.body.className = "gradient";
           
-          
-          window.document.title = "";
+          window.document.title = "Account\n – THE BARN GmbH";
           var redirectUrl = window.location.href.replace('/account/login', '/');
           var inputNodes = document.querySelectorAll('input[name=return_url]');
           for (var i = 0; i < inputNodes.length; i++) {
