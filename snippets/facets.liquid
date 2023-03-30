@@ -159,17 +159,23 @@
                           class="{% if filter_type != 'vertical' %} facets__list{% endif %} list-unstyled no-js-hidden"
                           role="list"
                         >
+                          {%- comment %}<locksmith:d1bd>{% endcomment -%}
+                            {%- assign locksmith_a201_forloop__size = 0 %}{%- for value in filter.values -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_a201_forloop__size = locksmith_a201_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_a201_forloop__index = nil -%}
+                          {%- comment %}</locksmith:d1bd>{% endcomment -%}
                           {%- for value in filter.values -%}
-                            <li class="list-menu__item facets__item{% if forloop.index > 10 and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
+                            {%- comment %}<locksmith:adfa>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_a201_forloop__index == nil %}{% assign locksmith_a201_forloop__index = 1 %}{% assign locksmith_a201_forloop__index0 = 0 %}{% else %}{% assign locksmith_a201_forloop__index = locksmith_a201_forloop__index | plus: 1 %}{% assign locksmith_a201_forloop__index0 = locksmith_a201_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_a201_forloop__index == 1 %}{% assign locksmith_a201_forloop__first = true %}{% else %}{% assign locksmith_a201_forloop__first = false %}{% endif %}{% if locksmith_a201_forloop__index == locksmith_a201_forloop__size %}{% assign locksmith_a201_forloop__last = true %}{% else %}{% assign locksmith_a201_forloop__last = false %}{% endif %}{% assign locksmith_a201_forloop__rindex = locksmith_a201_forloop__size | minus: locksmith_a201_forloop__index | minus: 1 %}{% assign locksmith_a201_forloop__rindex0 = locksmith_a201_forloop__size | minus: locksmith_a201_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:adfa>{% endcomment -%}
+                            <li class="list-menu__item facets__item{% if locksmith_a201_forloop__index > 10 and filter_type == 'vertical' %} show-more-item hidden{% endif %}">
                               <label
-                                for="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
+                                for="Filter-{{ filter.param_name | escape }}-{{ locksmith_a201_forloop__index }}"
                                 class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
                               >
                                 <input
                                   type="checkbox"
                                   name="{{ value.param_name }}"
                                   value="{{ value.value }}"
-                                  id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}"
+                                  id="Filter-{{ filter.param_name | escape }}-{{ locksmith_a201_forloop__index }}"
                                   {% if value.active %}
                                     checked
                                   {% endif %}
@@ -223,17 +229,23 @@
                           class="{% if filter_type != 'vertical' %} facets__list{% endif %} no-js-list list-unstyled no-js"
                           role="list"
                         >
+                          {%- comment %}<locksmith:0641>{% endcomment -%}
+                            {%- assign locksmith_f3cc_forloop__size = 0 %}{%- for value in filter.values -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_f3cc_forloop__size = locksmith_f3cc_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_f3cc_forloop__index = nil -%}
+                          {%- comment %}</locksmith:0641>{% endcomment -%}
                           {%- for value in filter.values -%}
+                            {%- comment %}<locksmith:2290>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_f3cc_forloop__index == nil %}{% assign locksmith_f3cc_forloop__index = 1 %}{% assign locksmith_f3cc_forloop__index0 = 0 %}{% else %}{% assign locksmith_f3cc_forloop__index = locksmith_f3cc_forloop__index | plus: 1 %}{% assign locksmith_f3cc_forloop__index0 = locksmith_f3cc_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_f3cc_forloop__index == 1 %}{% assign locksmith_f3cc_forloop__first = true %}{% else %}{% assign locksmith_f3cc_forloop__first = false %}{% endif %}{% if locksmith_f3cc_forloop__index == locksmith_f3cc_forloop__size %}{% assign locksmith_f3cc_forloop__last = true %}{% else %}{% assign locksmith_f3cc_forloop__last = false %}{% endif %}{% assign locksmith_f3cc_forloop__rindex = locksmith_f3cc_forloop__size | minus: locksmith_f3cc_forloop__index | minus: 1 %}{% assign locksmith_f3cc_forloop__rindex0 = locksmith_f3cc_forloop__size | minus: locksmith_f3cc_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:2290>{% endcomment -%}
                             <li class="list-menu__item facets__item">
                               <label
-                                for="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}-no-js"
+                                for="Filter-{{ filter.param_name | escape }}-{{ locksmith_f3cc_forloop__index }}-no-js"
                                 class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
                               >
                                 <input
                                   type="checkbox"
                                   name="{{ value.param_name }}"
                                   value="{{ value.value }}"
-                                  id="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}-no-js"
+                                  id="Filter-{{ filter.param_name | escape }}-{{ locksmith_f3cc_forloop__index }}-no-js"
                                   {% if value.active %}
                                     checked
                                   {% endif %}
@@ -667,10 +679,16 @@
                             {{ filter.label | escape }}
                           </button>
                           <ul class="mobile-facets__list list-unstyled" role="list">
+                            {%- comment %}<locksmith:beee>{% endcomment -%}
+                              {%- assign locksmith_47ca_forloop__size = 0 %}{%- for value in filter.values -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_47ca_forloop__size = locksmith_47ca_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_47ca_forloop__index = nil -%}
+                            {%- comment %}</locksmith:beee>{% endcomment -%}
                             {%- for value in filter.values -%}
+                              {%- comment %}<locksmith:d0e4>{% endcomment -%}
+                                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: filter, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_47ca_forloop__index == nil %}{% assign locksmith_47ca_forloop__index = 1 %}{% assign locksmith_47ca_forloop__index0 = 0 %}{% else %}{% assign locksmith_47ca_forloop__index = locksmith_47ca_forloop__index | plus: 1 %}{% assign locksmith_47ca_forloop__index0 = locksmith_47ca_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_47ca_forloop__index == 1 %}{% assign locksmith_47ca_forloop__first = true %}{% else %}{% assign locksmith_47ca_forloop__first = false %}{% endif %}{% if locksmith_47ca_forloop__index == locksmith_47ca_forloop__size %}{% assign locksmith_47ca_forloop__last = true %}{% else %}{% assign locksmith_47ca_forloop__last = false %}{% endif %}{% assign locksmith_47ca_forloop__rindex = locksmith_47ca_forloop__size | minus: locksmith_47ca_forloop__index | minus: 1 %}{% assign locksmith_47ca_forloop__rindex0 = locksmith_47ca_forloop__size | minus: locksmith_47ca_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                              {%- comment %}</locksmith:d0e4>{% endcomment -%}
                               <li class="mobile-facets__item list-menu__item">
                                 <label
-                                  for="Filter-{{ filter.param_name | escape }}-mobile-{{ forloop.index }}"
+                                  for="Filter-{{ filter.param_name | escape }}-mobile-{{ locksmith_47ca_forloop__index }}"
                                   class="mobile-facets__label{% if value.count == 0 and value.active == false %} mobile-facets__label--disabled{% endif %}"
                                 >
                                   <input
@@ -678,7 +696,7 @@
                                     type="checkbox"
                                     name="{{ value.param_name }}"
                                     value="{{ value.value }}"
-                                    id="Filter-{{ filter.param_name | escape }}-mobile-{{ forloop.index }}"
+                                    id="Filter-{{ filter.param_name | escape }}-mobile-{{ locksmith_47ca_forloop__index }}"
                                     {% if value.active %}
                                       checked
                                     {% endif %}

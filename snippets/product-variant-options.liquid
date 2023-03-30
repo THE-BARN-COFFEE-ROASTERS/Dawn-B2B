@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:02c8>{% endcomment -%}
+  {%- assign locksmith_2075_product__first_available_variant = nil %}{% assign locksmith_2075_product__selected_variant = nil %}{% assign locksmith_2075_product__selected_or_first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_2075_product__first_available_variant == nil and variant.available %}{% assign locksmith_2075_product__first_available_variant = variant %}{% endif %}{% if locksmith_2075_product__selected_variant == nil and variant.selected %}{% assign locksmith_2075_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_2075_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_2075_product__selected_or_first_available_variant == nil %}{% assign locksmith_2075_product__selected_or_first_available_variant = locksmith_2075_product__first_available_variant %}{% endif -%}
+{%- comment %}</locksmith:02c8>{% endcomment -%}
+
 {% comment %}
   Renders product variant options
 
@@ -23,22 +27,28 @@
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
+{%- comment %}<locksmith:79ad>{% endcomment -%}
+  {%- assign locksmith_31de_forloop__size = 0 %}{%- for value in option.values -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: option, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_31de_forloop__size = locksmith_31de_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_31de_forloop__index = nil -%}
+{%- comment %}</locksmith:79ad>{% endcomment -%}
 {%- for value in option.values -%}
+  {%- comment %}<locksmith:ce20>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: option, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_31de_forloop__index == nil %}{% assign locksmith_31de_forloop__index = 1 %}{% assign locksmith_31de_forloop__index0 = 0 %}{% else %}{% assign locksmith_31de_forloop__index = locksmith_31de_forloop__index | plus: 1 %}{% assign locksmith_31de_forloop__index0 = locksmith_31de_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_31de_forloop__index == 1 %}{% assign locksmith_31de_forloop__first = true %}{% else %}{% assign locksmith_31de_forloop__first = false %}{% endif %}{% if locksmith_31de_forloop__index == locksmith_31de_forloop__size %}{% assign locksmith_31de_forloop__last = true %}{% else %}{% assign locksmith_31de_forloop__last = false %}{% endif %}{% assign locksmith_31de_forloop__rindex = locksmith_31de_forloop__size | minus: locksmith_31de_forloop__index | minus: 1 %}{% assign locksmith_31de_forloop__rindex0 = locksmith_31de_forloop__size | minus: locksmith_31de_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:ce20>{% endcomment -%}
   {%- liquid
     assign option_disabled = true
 
     for option1_name in variants_option1_arr
       case option.position
         when 1
-          if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+          if variants_option1_arr[locksmith_31de_forloop__index0] == value and variants_available_arr[locksmith_31de_forloop__index0]
             assign option_disabled = false
           endif
         when 2
-          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+          if option1_name == locksmith_2075_product__selected_or_first_available_variant.option1 and variants_option2_arr[locksmith_31de_forloop__index0] == value and variants_available_arr[locksmith_31de_forloop__index0]
             assign option_disabled = false
           endif
         when 3
-          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+          if option1_name == locksmith_2075_product__selected_or_first_available_variant.option1 and variants_option2_arr[locksmith_31de_forloop__index0] == locksmith_2075_product__selected_or_first_available_variant.option2 and variants_option3_arr[locksmith_31de_forloop__index0] == value and variants_available_arr[locksmith_31de_forloop__index0]
             assign option_disabled = false
           endif
       endcase
@@ -48,7 +58,7 @@
   {%- if block.settings.picker_type == 'button' -%}
     <input
       type="radio"
-      id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      id="{{ section.id }}-{{ option.position }}-{{ locksmith_31de_forloop__index0 }}"
       name="{{ option.name }}"
       value="{{ value | escape }}"
       form="{{ product_form_id }}"
@@ -59,7 +69,7 @@
         class="disabled"
       {% endif %}
     >
-    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+    <label for="{{ section.id }}-{{ option.position }}-{{ locksmith_31de_forloop__index0 }}">
       {{ value -}}
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>

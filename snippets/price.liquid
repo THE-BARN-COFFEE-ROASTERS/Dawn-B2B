@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:0a9d>{% endcomment -%}
+  {%- assign locksmith_3680_product__first_available_variant = nil %}{% assign locksmith_3680_product__selected_variant = nil %}{% assign locksmith_3680_product__selected_or_first_available_variant = nil %}{% assign locksmith_3680_product__price_min = nil %}{% assign locksmith_3680_product__price_max = nil %}{% assign locksmith_3680_product__price_varies = false %}{% assign locksmith_3680_product__compare_at_price_min = nil %}{% assign locksmith_3680_product__compare_at_price_max = nil %}{% assign locksmith_3680_product__compare_at_price_varies = false %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_3680_product__first_available_variant == nil and variant.available %}{% assign locksmith_3680_product__first_available_variant = variant %}{% endif %}{% if locksmith_3680_product__selected_variant == nil and variant.selected %}{% assign locksmith_3680_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_3680_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% if locksmith_3680_product__price_min == nil or variant.price < locksmith_3680_product__price_min %}{% assign locksmith_3680_product__price_min = variant.price %}{% endif %}{% if locksmith_3680_product__price_max == nil or locksmith_3680_product__price_max < variant.price %}{% assign locksmith_3680_product__price_max = variant.price %}{% endif %}{% if locksmith_3680_product__compare_at_price_min == nil or variant.compare_at_price < locksmith_3680_product__compare_at_price_min %}{% assign locksmith_3680_product__compare_at_price_min = variant.compare_at_price %}{% endif %}{% if locksmith_3680_product__compare_at_price_max == nil or locksmith_3680_product__compare_at_price_max < variant.compare_at_price %}{% assign locksmith_3680_product__compare_at_price_max = variant.compare_at_price %}{% endif %}{% endfor %}{% if locksmith_3680_product__selected_or_first_available_variant == nil %}{% assign locksmith_3680_product__selected_or_first_available_variant = locksmith_3680_product__first_available_variant %}{% endif %}{% if locksmith_3680_product__price_min != locksmith_3680_product__price_max %}{% assign locksmith_3680_product__price_varies = true %}{% endif %}{% if locksmith_3680_product__compare_at_price_min != locksmith_3680_product__compare_at_price_max %}{% assign locksmith_3680_product__compare_at_price_varies = true %}{% endif -%}
+{%- comment %}</locksmith:0a9d>{% endcomment -%}
+
 {% comment %}
   Renders a list of product's price (regular, sale)
 
@@ -12,7 +16,7 @@
 {% endcomment %}
 {%- liquid
   if use_variant
-    assign target = product.selected_or_first_available_variant
+    assign target = locksmith_3680_product__selected_or_first_available_variant
   else
     assign target = product
   endif
@@ -25,7 +29,7 @@
     assign money_price = price | money_with_currency
   endif
 
-  if target == product and product.price_varies
+  if target == product and locksmith_3680_product__price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
 -%}
@@ -35,7 +39,7 @@
     {%- if price_class %} {{ price_class }}{% endif -%}
     {%- if available == false %} price--sold-out {% endif -%}
     {%- if compare_at_price > price %} price--on-sale {% endif -%}
-    {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+    {%- if locksmith_3680_product__price_varies == false and locksmith_3680_product__compare_at_price_varies %} price--no-compare{% endif -%}
     {%- if show_badges %} price--show-badge{% endif -%}
   ">
   <div class="price__container">
@@ -51,7 +55,7 @@
       </span>
     </div>
     <div class="price__sale">
-      {%- unless product.price_varies == false and product.compare_at_price_varies %}
+      {%- unless locksmith_3680_product__price_varies == false and locksmith_3680_product__compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
         <span>
           <s class="price-item price-item--regular">
@@ -68,17 +72,17 @@
         {{ money_price }}
       </span>
     </div>
-    <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+    <small class="unit-price caption{% if locksmith_3680_product__selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
       <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
       <span class="price-item price-item--last">
-        <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
+        <span>{{- locksmith_3680_product__selected_or_first_available_variant.unit_price | money -}}</span>
         <span aria-hidden="true">/</span>
         <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
         <span>
-          {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-            {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+          {%- if locksmith_3680_product__selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+            {{- locksmith_3680_product__selected_or_first_available_variant.unit_price_measurement.reference_value -}}
           {%- endif -%}
-          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+          {{ locksmith_3680_product__selected_or_first_available_variant.unit_price_measurement.reference_unit }}
         </span>
       </span>
     </small>
