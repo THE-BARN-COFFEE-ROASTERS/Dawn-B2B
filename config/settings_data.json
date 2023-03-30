@@ -6,7 +6,7 @@
     "colors_accent_1": "#804d15",
     "gradient_accent_1": "linear-gradient(133deg, rgba(43, 43, 43, 0.58) 96%, rgba(0, 0, 0, 1) 96%, rgba(250, 220, 54, 1) 97%)",
     "colors_accent_2": "#141414",
-    "gradient_accent_2": "",
+    "gradient_accent_2": "linear-gradient(180deg, rgba(255, 145, 129, 1), rgba(254, 91, 124, 1) 49%, rgba(255, 140, 162, 1) 100%)",
     "colors_text": "#191919",
     "colors_outline_button_labels": "#121212",
     "colors_background_1": "#ffffff",
@@ -135,6 +135,20 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "background-1"
+        }
+      },
+      "main-register": {
+        "type": "main-register",
+        "settings": {
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "main-login": {
+        "type": "main-login",
+        "settings": {
+          "padding_top": 36,
+          "padding_bottom": 36
         }
       }
     },
