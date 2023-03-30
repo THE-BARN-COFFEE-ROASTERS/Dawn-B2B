@@ -2,7 +2,7 @@
   "current": {
     "logo": "shopify:\/\/shop_images\/barn_logo_large_house.png",
     "logo_width": 60,
-    "colors_solid_button_labels": "#ffffff",
+    "colors_solid_button_labels": "#804d15",
     "colors_accent_1": "#804d15",
     "gradient_accent_1": "linear-gradient(133deg, rgba(43, 43, 43, 0.58) 96%, rgba(0, 0, 0, 1) 96%, rgba(250, 220, 54, 1) 97%)",
     "colors_accent_2": "#141414",
