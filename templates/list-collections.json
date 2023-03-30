@@ -2,7 +2,6 @@
   "sections": {
     "main": {
       "type": "main-list-collections",
-      "disabled": true,
       "settings": {
         "title": "Collections",
         "sort": "alphabetical",
@@ -13,6 +12,7 @@
     },
     "dced5b68-039d-4c3d-9711-6aa13c174bfa": {
       "type": "collection-list",
+      "disabled": true,
       "blocks": {
         "template--17879420141833__dced5b68-039d-4c3d-9711-6aa13c174bfa-167999937125fcd50d-0": {
           "type": "featured_collection",
