@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:bfb5>{% endcomment -%}
+  {%- assign locksmith_a158_product__has_only_default_variant = false %}{% assign _variants_count = 0 %}{% assign locksmith_a158_product__first_available_variant = nil %}{% assign locksmith_a158_product__selected_variant = nil %}{% assign locksmith_a158_product__selected_or_first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% assign _variants_count = _variants_count | plus: 1 %}{% if locksmith_a158_product__first_available_variant == nil and variant.available %}{% assign locksmith_a158_product__first_available_variant = variant %}{% endif %}{% if locksmith_a158_product__selected_variant == nil and variant.selected %}{% assign locksmith_a158_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_a158_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if _variants_count == 1 %}{% assign locksmith_a158_product__has_only_default_variant = true %}{% endif %}{% if locksmith_a158_product__selected_or_first_available_variant == nil %}{% assign locksmith_a158_product__selected_or_first_available_variant = locksmith_a158_product__first_available_variant %}{% endif %}{% assign _a158_safe_variants = '' %}{% for _variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _a158_safe_variants %}{% if _a158_safe_variants != blank %}{{ _a158_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _a158_safe_variants %}[{{ _a158_safe_variants }}]{% endcapture %}{% assign _a158_unsafe_variants = product.variants | json -%}
+{%- comment %}</locksmith:bfb5>{% endcomment -%}
+
 {% comment %}
   Renders product variant-picker
 
@@ -9,7 +13,7 @@
   Usage:
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
-{%- unless product.has_only_default_variant -%}
+{%- unless locksmith_a158_product__has_only_default_variant -%}
   {%- if block.settings.picker_type == 'button' -%}
     <variant-radios
       id="variant-radios-{{ section.id }}"
@@ -28,7 +32,10 @@
         </fieldset>
       {%- endfor -%}
       <script type="application/json">
-        {{ product.variants | json }}
+        {%- comment %}<locksmith:e239>{% endcomment -%}
+          {{- product.variants | json | replace: _a158_unsafe_variants, _a158_safe_variants -}}
+          {%- comment %}original: {{ product.variants | json }}{%- endcomment %}
+        {%- comment %}</locksmith:e239>{% endcomment -%}
       </script>
     </variant-radios>
   {%- else -%}
@@ -62,14 +69,17 @@
       {%- endfor -%}
 
       <script type="application/json">
-        {{ product.variants | json }}
+        {%- comment %}<locksmith:e239>{% endcomment -%}
+          {{- product.variants | json | replace: _a158_unsafe_variants, _a158_safe_variants -}}
+          {%- comment %}original: {{ product.variants | json }}{%- endcomment %}
+        {%- comment %}</locksmith:e239>{% endcomment -%}
       </script>
     </variant-selects>
   {%- endif -%}
 {%- endunless -%}
 
 <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-  <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+  <div class="product-form__input{% if locksmith_a158_product__has_only_default_variant %} hidden{% endif %}">
     <label class="form__label" for="Variants-{{ section.id }}">
       {{- 'products.product.product_variants' | t -}}
     </label>
@@ -81,8 +91,11 @@
         form="{{ product_form_id }}"
       >
         {%- for variant in product.variants -%}
+          {%- comment %}<locksmith:5775>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:5775>{% endcomment -%}
           <option
-            {% if variant == product.selected_or_first_available_variant %}
+            {% if variant == locksmith_a158_product__selected_or_first_available_variant %}
               selected="selected"
             {% endif %}
             {% if variant.available == false %}
