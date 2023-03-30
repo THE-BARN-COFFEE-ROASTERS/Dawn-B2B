@@ -72,9 +72,6 @@
         {%- for product_option in product_variant.product.options_with_values -%}
           {{ product_option.name | escape }}:&nbsp;
           {%- for value in product_option.values -%}
-            {%- comment %}<locksmith:23c3>{% endcomment -%}
-              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: value, subject_parent: product_option, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-            {%- comment %}</locksmith:23c3>{% endcomment -%}
             {%- if product_option.selected_value == value -%}
               <span>{{ value | escape }}</span>
             {%- endif -%}

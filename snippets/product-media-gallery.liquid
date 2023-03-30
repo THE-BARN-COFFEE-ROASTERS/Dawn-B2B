@@ -1,7 +1,3 @@
-{%- comment %}<locksmith:306a>{% endcomment -%}
-  {%- assign locksmith_5149_product__first_available_variant = nil %}{% assign locksmith_5149_product__selected_variant = nil %}{% assign locksmith_5149_product__selected_or_first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_5149_product__first_available_variant == nil and variant.available %}{% assign locksmith_5149_product__first_available_variant = variant %}{% endif %}{% if locksmith_5149_product__selected_variant == nil and variant.selected %}{% assign locksmith_5149_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_5149_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_5149_product__selected_or_first_available_variant == nil %}{% assign locksmith_5149_product__selected_or_first_available_variant = locksmith_5149_product__first_available_variant %}{% endif -%}
-{%- comment %}</locksmith:306a>{% endcomment -%}
-
 {% comment %}
   Renders a product media gallery. Should be used with 'media-gallery.js'
   Also see 'product-media-modal'
@@ -68,8 +64,8 @@
       class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
       role="list"
     >
-      {%- if locksmith_5149_product__selected_or_first_available_variant.featured_media != null -%}
-        {%- assign featured_media = locksmith_5149_product__selected_or_first_available_variant.featured_media -%}
+      {%- if product.selected_or_first_available_variant.featured_media != null -%}
+        {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
         <li
           id="Slide-{{ section.id }}-{{ featured_media.id }}{{ id_append }}"
           class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}"
@@ -93,10 +89,10 @@
         </li>
       {%- endif -%}
       {%- for media in product.media -%}
-        {%- unless media.id == locksmith_5149_product__selected_or_first_available_variant.featured_media.id -%}
+        {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
           <li
             id="Slide-{{ section.id }}-{{ media.id }}{{ id_append }}"
-            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if locksmith_5149_product__selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}"
+            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}"
             data-media-id="{{ section.id }}-{{ media.id }}"
           >
             {%- liquid
@@ -234,7 +230,7 @@
           </li>
         {%- endif -%}
         {%- for media in product.media -%}
-          {%- unless media.id == locksmith_5149_product__selected_or_first_available_variant.featured_media.id -%}
+          {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
             {%- liquid
               capture media_index
                 if media.media_type == 'model'

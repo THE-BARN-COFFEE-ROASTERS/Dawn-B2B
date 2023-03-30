@@ -30,9 +30,6 @@
         role="list"
       >
         {% for recommendation in recommendations.products %}
-          {%- comment %}<locksmith:052b>{% endcomment -%}
-            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: recommendation, subject_parent: recommendations, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-          {%- comment %}</locksmith:052b>{% endcomment -%}
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,

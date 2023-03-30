@@ -1,7 +1,3 @@
-{%- comment %}<locksmith:c4bf>{% endcomment -%}
-  {%- assign locksmith_c976_product__first_available_variant = nil %}{% assign locksmith_c976_product__selected_variant = nil %}{% assign locksmith_c976_product__selected_or_first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_c976_product__first_available_variant == nil and variant.available %}{% assign locksmith_c976_product__first_available_variant = variant %}{% endif %}{% if locksmith_c976_product__selected_variant == nil and variant.selected %}{% assign locksmith_c976_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_c976_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_c976_product__selected_or_first_available_variant == nil %}{% assign locksmith_c976_product__selected_or_first_available_variant = locksmith_c976_product__first_available_variant %}{% endif -%}
-{%- comment %}</locksmith:c4bf>{% endcomment -%}
-
 {% comment %}
   Renders a product media modal. Also see 'product-media-gallery'
 
@@ -37,8 +33,8 @@
       tabindex="0"
     >
       {%- liquid
-        if locksmith_c976_product__selected_or_first_available_variant.featured_media != null
-          assign media = locksmith_c976_product__selected_or_first_available_variant.featured_media
+        if product.selected_or_first_available_variant.featured_media != null
+          assign media = product.selected_or_first_available_variant.featured_media
           render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
         endif
       -%}
@@ -51,7 +47,7 @@
             assign variant_image = false
           endif
 
-          unless media.id == locksmith_c976_product__selected_or_first_available_variant.featured_media.id
+          unless media.id == product.selected_or_first_available_variant.featured_media.id
             render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
           endunless
         -%}
