@@ -96,6 +96,22 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "9c275a33-d4a7-4a16-a0fe-bf0246a08047": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "fe220254-ce63-4c11-99cd-902848c929ea": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
         }
       },
       "block_order": [
@@ -111,7 +127,9 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share"
+        "share",
+        "9c275a33-d4a7-4a16-a0fe-bf0246a08047",
+        "fe220254-ce63-4c11-99cd-902848c929ea"
       ],
       "settings": {
         "enable_sticky_info": true,
