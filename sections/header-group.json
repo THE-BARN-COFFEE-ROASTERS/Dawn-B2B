@@ -8,10 +8,10 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Login to your new customer account",
             "text_alignment": "center",
             "color_scheme": "accent-2",
-            "link": "shopify:\/\/collections"
+            "link": "https:\/\/shopify.com\/16573941\/account"
           }
         }
       },
