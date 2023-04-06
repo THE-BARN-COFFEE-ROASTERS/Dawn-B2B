@@ -454,5 +454,14 @@
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "payment_gateway": {
+        "bank_deposit_label": "Bank Deposit",
+        "cash_on_delivery_label": "Cash on Delivery",
+        "money_order_label": "Money Order"
+      }
+    }
   }
 }
