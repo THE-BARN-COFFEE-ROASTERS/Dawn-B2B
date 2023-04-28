@@ -37,13 +37,20 @@
           "settings": {
             "collection": "milk-espresso"
           }
+        },
+        "614828f4-9e1f-43e5-9416-829d174bf35b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tree-donation"
+          }
         }
       },
       "block_order": [
         "template--17879420141833__dced5b68-039d-4c3d-9711-6aa13c174bfa-167999937125fcd50d-0",
         "template--17879420141833__dced5b68-039d-4c3d-9711-6aa13c174bfa-167999937125fcd50d-1",
         "template--17879420141833__dced5b68-039d-4c3d-9711-6aa13c174bfa-167999937125fcd50d-2",
-        "400ea2b3-f18a-4451-a037-62d09133b795"
+        "400ea2b3-f18a-4451-a037-62d09133b795",
+        "614828f4-9e1f-43e5-9416-829d174bf35b"
       ],
       "settings": {
         "title": "Collections",
