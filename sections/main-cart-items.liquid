@@ -346,26 +346,8 @@
         {%- endif -%}
       </div>
     </div>
+                      
 
-                       
-        <!-- Shopify shopping cart -- capture and validate VAT numbers and set business customers as tax exempt when applicable. Used by Sufio for Shopify (www.sufio.com/shopify). -->
-    <div class="vat-fields">
-      <div class="vat-email">
-        {% if customer.email %}
-        <input type="hidden" id="vat_email" name="attributes[Email]" value="{{ customer.email }}" />
-        {% else %}
-        <label for="email">Email</label>
-        <input type="text" id="vat_email" name="attributes[Email]" value="{{ cart.attributes['Email'] }}" data-error-message="Please enter your email." />
-        {% endif %}
-      </div>
-    
-      <div class="vat-reg-number">
-        <label for="vat_reg_no">VAT Registration Number</label>
-        <input type="text" id="vat_reg_no" name="attributes[VAT Registration Number]" value="{{ cart.attributes['VAT Registration Number'] }}" />
-      </div>
-    </div>
-    
-   
     <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">
       {{ 'accessibility.loading' | t }}
