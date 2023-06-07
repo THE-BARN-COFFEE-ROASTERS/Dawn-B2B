@@ -13,7 +13,7 @@
         "76d34d8b-ae55-41ec-9113-9a6a65c72644": {
           "type": "shopify:\/\/apps\/exemptify\/blocks\/ExemptifyCartValidationSection\/53648040-92ea-472b-92a5-eb781e92b01b",
           "settings": {
-            "align_right": false,
+            "align_right": true,
             "exemptify_cart_title": "EU VAT ID",
             "title_size": 1.3,
             "exemptify_cart_subttitle": "(VAT will be deducted at payment step)",
