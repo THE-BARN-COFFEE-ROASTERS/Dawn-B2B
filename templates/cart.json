@@ -9,7 +9,6 @@
     },
     "1686117469fc7e1c2a": {
       "type": "apps",
-      "disabled": true,
       "blocks": {
         "76d34d8b-ae55-41ec-9113-9a6a65c72644": {
           "type": "shopify:\/\/apps\/exemptify\/blocks\/ExemptifyCartValidationSection\/53648040-92ea-472b-92a5-eb781e92b01b",
