@@ -347,74 +347,7 @@
       </div>
     </div>
 
-    <!-- Shopify shopping cart -- capture and validate VAT numbers and set business customers as tax exempt when applicable. Used by Sufio for Shopify (www.sufio.com/shopify). -->
-<div class="vat-fields">
-  <div class="vat-email">
-    {% if customer.email %}
-    <input type="hidden" id="vat_email" name="attributes[Email]" value="{{ customer.email }}" />
-    {% else %}
-    <label for="email">Email</label>
-    <input type="text" id="vat_email" name="attributes[Email]" value="{{ cart.attributes['Email'] }}" data-error-message="Please enter your email." />
-    {% endif %}
-  </div>
-
-  <div class="vat-reg-number">
-    <label for="vat_reg_no">VAT Registration Number</label>
-    <input type="text" id="vat_reg_no" name="attributes[VAT Registration Number]" value="{{ cart.attributes['VAT Registration Number'] }}" />
-  </div>
-</div>
-
-                          
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function(event) {
-        $('input[name=checkout],button[name=checkout],input[name=goto_pp],button[name=goto_pp]').on("click", function() {
-          // If enabled, customers will be unable to submit VAT numbers without entering their emails
-          var check_email = true;  
-    
-          var submit_button = $(this);
-          var email_input = $('input#vat_email');
-          var vat_input = $('input#vat_reg_no');
-          var email = email_input.val();
-          var vat_no = vat_input.val();
-          email_input[0].setCustomValidity('');
-    
-          if ((email) && (vat_no)) {
-            // Submit email and VAT number for validation and set customer as tax exempt
-            $.ajax({
-              type : "GET",
-              dataType: "jsonp",
-              url: "/apps/sufio/customer-vat/",
-              data: { email: email, vat_no: vat_no },
-              success: function(data) {
-                // Proceed to checkout after successfully sending the VAT number
-                var form = submit_button.parents('form');
-                var action = form.attr('action');
-                form.attr('action', action + (action.indexOf('?') >= 0 ? '&' : '?') + 'checkout[email]=' + encodeURIComponent(email));
-                submit_button.unbind().click();
-              }
-            });
-          } else if ((vat_no) && (check_email)) {
-            // Missing email - display error message
-            email_input.prop("required", "required");
-            email_input[0].setCustomValidity(email_input.data("error-message"));
-            email_input[0].reportValidity();
-            email_input.removeProp("required");
-            return false;
-          } else {
-            return true;
-          }
-    
-          // Proceed to checkout after one second
-          setTimeout( function () { 
-            submit_button.unbind().click();
-          }, 1000);
-    
-          return false;
-        });
-      });
-    </script>
-
-                       
+                     
     <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">
       {{ 'accessibility.loading' | t }}
