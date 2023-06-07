@@ -158,7 +158,7 @@
     "blocks": {
       "17530695623102652971": {
         "type": "shopify:\/\/apps\/exemptify\/blocks\/ExemptifyApp\/53648040-92ea-472b-92a5-eb781e92b01b",
-        "disabled": true,
+        "disabled": false,
         "settings": {
         }
       }
