@@ -307,7 +307,9 @@
                           </dt>
                           <dd>
                             <s class="cart-item__old-price price price--end">
+                              <div bss-b2b-cart-item-key="{{ item.key }}" bss-b2b-item-original-price > 
                               {{ item.original_line_price | money }}
+                              </div>
                             </s>
                           </dd>
                           <dt class="visually-hidden">
