@@ -316,7 +316,9 @@
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
                           <dd class="price price--end">
+                            <div bss-b2b-cart-item-key="{{ item.key }}" bss-b2b-final-price >
                             {{ item.final_line_price | money }}
+                            </div>
                           </dd>
                         </dl>
                       {%- else -%}
