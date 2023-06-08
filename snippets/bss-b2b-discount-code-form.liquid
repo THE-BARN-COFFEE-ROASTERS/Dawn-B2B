@@ -272,7 +272,8 @@
                         messageDiscountCode.innerHTML = '<span class="bss-b2b-translation-dc-message_discount_code_null">' + messageNull + '</span>';
                     } else {
                         let today = new Date();
-                        let moment = today.toLocaleTimeString();
+                        let moment = today.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });                    
+                        today.setUTCHours(0, 0, 0, 0);
                         let shopDataHTML = JSON.parse(document.getElementById('bss-b2b-store-data').innerHTML);
                         let shopDataRes = await fetch(`https://${shopDataHTML.shop.domain}/cart.js`);
                         let shopData = await shopDataRes.json();
